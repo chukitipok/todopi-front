@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="col-6 mr-auto ml-auto mt-5">
+        <form [formGroup]='credentials' (ngSubmit)='onSubmit(credentials.value)'>
+            <div class="form-group">
+                <input class="form-control" type="text" formControlName='email' id="">
+            </div>
+    
+            <div class="form-group">
+                <input class="form-control" type="password" formControlName='password' id="">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="form-control btn btn-success" [disabled]='!credentials.valid'>Login</button>
+            </div>
+        </form>
+        <a href="" class="link">Already registered ? Login !</a>
+    </div>
+
+
+</div>
