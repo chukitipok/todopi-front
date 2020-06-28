@@ -1,0 +1,19 @@
+component: register, login ( finir ), todolist
+service : 
+	auth :
+	 register
+	todolist :
+		create,
+		task:
+			add,
+			create,
+			modify,
+
+test : 
+	composant: test unitaire
+    test d'intégration
+    test d'IHM (fonctionnels)
+
+Bonus: Integration continue
+
+
