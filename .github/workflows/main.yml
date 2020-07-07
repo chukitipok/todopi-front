@@ -13,7 +13,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest | apt-get install ttf-freefont
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -23,8 +23,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.8
-    - name: Install Chrome
-      run: apt-get install ttf-freefont
     - name: Install dependencies
       run: npm install
     - name: Lint
