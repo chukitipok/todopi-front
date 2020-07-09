@@ -2,11 +2,13 @@
     <div class="col-6 mr-auto ml-auto mt-5">
         <form [formGroup]='credentials' (ngSubmit)='onSubmit(credentials.value)'>
             <div class="form-group">
-                <input class="form-control" type="text" formControlName='email' id="">
+                <label for="email">Email</label>
+                <input class="form-control" type="text" formControlName='email' id="email">
             </div>
     
             <div class="form-group">
-                <input class="form-control" type="password" formControlName='password' id="">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" formControlName='password' id="password">
             </div>
             <div class="form-group">
                 <button type="submit" class="form-control btn btn-success" [disabled]='!credentials.valid'>Login</button>
