@@ -7,7 +7,7 @@ export class SessionService {
 
   constructor() { }
 
-  register(value: any, key: string) {
+  register(value: any, key: string): void {
     localStorage.setItem(key, btoa(JSON.stringify(value)));
   }
 

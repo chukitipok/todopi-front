@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  logged: boolean = false;
+  logged = false;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -15,7 +15,7 @@ export class AuthService {
     return this.httpClient.post(`${environment.api_url}/user/login`, credentials);
   }
 
-  isLogged() {
+  isLogged(): boolean {
     return this.logged;
   }
 

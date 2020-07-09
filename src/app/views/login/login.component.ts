@@ -13,8 +13,11 @@ export class LoginComponent implements OnInit {
 
   credentials: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService,
-    private sessionService: SessionService, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private sessionService: SessionService,
+    private router: Router) {
     this.credentials = formBuilder.group({
       email: ['', [Validators.required]],
       password: ['', Validators.required],
@@ -27,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(values: AbstractControl): void {
     this.authService.login(values).subscribe(res => {
-      if (res.status === "failure") {
+      if (res.status === 'failure') {
         console.log(res);
         // error message
       } else {
