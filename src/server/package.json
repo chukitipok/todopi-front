@@ -1,0 +1,43 @@
+{
+  "name": "todopi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node .",
+    "start": "babel-node .",
+    "test": "mocha --require @babel/register",
+    "ci": "env DB_NAME=todobase-test babel-node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "argon2": "^0.26.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "glob": "^7.1.6",
+    "helmet": "^3.21.2",
+    "lodash": "^4.17.15",
+    "mocha": "^7.2.0",
+    "mongoose": "^5.9.0",
+    "xregexp": "^4.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "@types/express": "^4.17.3",
+    "@types/mongoose": "^5.7.7",
+    "@types/node": "^12.12.31",
+    "nodemon": "^2.0.2"
+  }
+}
