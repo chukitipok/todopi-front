@@ -34,6 +34,7 @@ jobs:
           cd ./src/server
           ls -l
           npm i
+          npm run test
           npm run ci&
 
   client:
