@@ -2,8 +2,8 @@
 name: Todopi-front-CI
 
 on:
-  push:
-    branches: [ todolist-scenario ]
+  pull-request:
+    branches: [ master ]
 
 jobs:
 
@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: '12.x'
         mongodb-version: [4.0, 4.2]
 
     steps:
@@ -32,7 +32,6 @@ jobs:
       - name: Build server
         run: |
           cd ./src/server
-          ls -l
           npm i
           npm run test
           npm run ci&
@@ -43,7 +42,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: '12.x'
 
     needs: server
 
