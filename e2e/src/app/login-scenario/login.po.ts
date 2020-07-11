@@ -5,19 +5,19 @@ export class LoginPage {
     return browser.get(browser.baseUrl + '/login') as Promise<unknown>;
   }
 
-  async getEmail(): Promise<ElementFinder> {
+  getEmail(): ElementFinder {
     return element(by.id('email'));
   }
 
-  async getPassword(): Promise<ElementFinder> {
+  getPassword(): ElementFinder {
     return element(by.id('password'));
   }
 
-  async getSubmitButton(): Promise<ElementFinder> {
+  getSubmitButton(): ElementFinder {
     return element(by.id('login-submit'));
   }
 
-  async getCurrentUrl(): Promise<string> {
-    return browser.getCurrentUrl();
+  getCurrentUrl(): Promise<string> {
+    return browser.getCurrentUrl() as Promise<string>;
   }
 }

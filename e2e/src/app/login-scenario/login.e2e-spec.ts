@@ -1,5 +1,5 @@
 import { LoginPage } from './login.po';
-import { browser, logging } from 'protractor';
+import {browser, logging} from 'protractor';
 
 describe('workspace-project App', () => {
   let page: LoginPage;
@@ -8,15 +8,14 @@ describe('workspace-project App', () => {
     page = new LoginPage();
   });
 
-  it('should not login if user does not exist', async () => {
-    await page.navigateTo();
-    const emailInput = await page.getEmail();
-    const passwordInput = await page.getPassword();
-    const submitButton = await page.getSubmitButton();
-    emailInput.sendKeys('toto@toto.fr');
-    passwordInput.sendKeys('toto@toto.fr');
-    submitButton.click();
-    expect(await page.getCurrentUrl()).toBe(browser.baseUrl + 'login');
+  it('should not login if user does not exist', () => {
+    page.navigateTo();
+
+    page.getEmail().sendKeys('toto@toto.fr');
+    page.getPassword().sendKeys('toto@toto.fr');
+    page.getSubmitButton().click();
+
+    expect(page.getCurrentUrl()).toBe(browser.baseUrl + 'login');
   });
 
   afterEach(async () => {
