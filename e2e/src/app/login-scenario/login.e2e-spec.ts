@@ -9,12 +9,12 @@ describe('workspace-project App', () => {
     page.navigateTo();
   });
 
-  it('should not login if user does not exist', () => {
+  it('should not login if user does not exist', async () => {
     page.getEmail().sendKeys('toto@toto.fr');
     page.getPassword().sendKeys('toto@toto.fr');
     page.getSubmitButton().click();
 
-    expect(page.getCurrentUrl()).toBe(browser.baseUrl + 'login');
+    expect(await page.getCurrentUrl()).toBe(browser.baseUrl + 'login');
   });
 
   afterEach(async () => {
