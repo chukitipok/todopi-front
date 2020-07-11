@@ -7,14 +7,14 @@ on:
 
 jobs:
 
-  server:
+  build:
 
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [12.x]
-        mongodb-version: [4.0, 4.2]
+        mongodb-version: [4.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -29,36 +29,16 @@ jobs:
           mongodb-version: ${{ matrix.mongodb-version }}
           mongodb-replica-set: insert-replica-set-name
 
-      - name: Build server
+      - name: Build Server
         run: |
           cd ./src/server
           npm i
           npm run test
           npm run ci&
-
-  client:
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
-    needs: server
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        run: npm install
-      - name: Lint
-        run: npm run lint
-      - name: Test
-        run: npm run test:ci
-      - name: E2E
-        run: npm run e2e:ci
-      - run: npm run build --if-present
+          cd ../..
+      - name: Build Client
+        run: |
+          npm i
+          npm run test:ci
+          npm run e2e:ci
+          npm build --if-present
