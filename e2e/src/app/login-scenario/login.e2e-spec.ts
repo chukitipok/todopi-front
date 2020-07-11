@@ -6,11 +6,10 @@ describe('workspace-project App', () => {
 
   beforeEach(() => {
     page = new LoginPage();
+    page.navigateTo();
   });
 
   it('should not login if user does not exist', () => {
-    page.navigateTo();
-
     page.getEmail().sendKeys('toto@toto.fr');
     page.getPassword().sendKeys('toto@toto.fr');
     page.getSubmitButton().click();
