@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: '12.x'
+        node-version: [12.x]
         mongodb-version: [4.0, 4.2]
 
     steps:
@@ -42,7 +42,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: '12.x'
+        node-version: [12.x]
 
     needs: server
 
