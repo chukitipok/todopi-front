@@ -4,7 +4,7 @@
       <label for="email">Email</label>
       <input class="form-control" type="text" formControlName='email' id="email">
       <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-        You must provide an Email.
+        <span id="email-error">You must provide an Email.</span>
       </div>
     </div>
 
@@ -12,7 +12,7 @@
       <label for="password">Password</label>
       <input class="form-control" type="password" formControlName='password' id="password">
       <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-        You must provide a Password.
+        <span id="password-error">You must provide a Password.</span>
       </div>
     </div>
     <div class="row">
