@@ -6,6 +6,7 @@ describe('workspace-project App', () => {
 
   beforeEach(() => {
     page = new LoginPage();
+    console.log('toto');
   });
 
   it('should not login if user does not exist', async () => {
