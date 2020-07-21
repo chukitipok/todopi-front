@@ -4,7 +4,7 @@
         <label for="email">First name</label>
         <input class="form-control" type="text" formControlName='firstname' id="firstname">
         <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger">
-          <span id="email-error">You must provide an firstname.</span>
+          <span id="firstname-error">You must provide an firstname.</span>
         </div>
       </div>
 
@@ -12,15 +12,15 @@
         <label for="email">Last name</label>
         <input class="form-control" type="text" formControlName='lastname' id="lastname">
         <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger">
-          <span id="email-error">You must provide an lastname.</span>
+          <span id="lastname-error">You must provide an lastname.</span>
         </div>
       </div>
 
       <div class="form-group">
         <label for="email">Birthdate</label>
-        <input class="form-control" type="date" formControlName='birthdate' id="date">
+        <input class="form-control" type="date" formControlName='birthdate' id="birthdate">
         <div *ngIf="birthdate.invalid && (birthdate.dirty || birthdate.touched)" class="alert alert-danger">
-          <span id="email-error">You must provide an birthdate.</span>
+          <span id="birthdate-error">You must provide an birthdate.</span>
         </div>
       </div>
 
@@ -41,7 +41,7 @@
       </div>
       <div class="row">
         <div class="form-group col-4">
-          <button id="login-submit" type="submit" class="form-control btn btn-success" [disabled]="!registerInfo.valid">Register</button>
+          <button id="register-submit" type="submit" class="form-control btn btn-success" [disabled]="!registerInfo.valid">Register</button>
         </div>
         <a routerLink="/login" class="link col-lg-8">Already registered? Click and sign in!</a>
       </div>
