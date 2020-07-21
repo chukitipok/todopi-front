@@ -18,6 +18,7 @@ export class TodoListComponent implements OnInit {
   constructor(private fb: FormBuilder, private todoListService: TodoListService) { }
 
   ngOnInit(): void {
+    if (this.hasTodoList)
     this.todoListForm = this.fb.group({
       name: ['', [Validators.required]]
     });
@@ -26,7 +27,9 @@ export class TodoListComponent implements OnInit {
   createTodoList(data: FormGroup): void {
     this.todoListService.createTodoList(data.value)
       .subscribe(response => {
-        if (response?.status.equals('success')) {
+        console.log(response);
+        if (response?.status === 'success') {
+          console.log(response);
           this.hasTodoList = true;
           this.myTodoList = response.resultat;
         }

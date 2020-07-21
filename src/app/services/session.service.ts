@@ -12,6 +12,10 @@ export class SessionService {
   }
 
   get(key: string): any {
-    return atob(localStorage.getItem(key));
+    const id = atob(localStorage.getItem(key))
+      .replace('"', '')
+      .replace('"', '');
+    console.log(id);
+    return id;
   }
 }
