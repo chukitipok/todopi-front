@@ -24,7 +24,8 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     private authService: AuthService,
     private sessionService: SessionService,
     private router: Router) {
@@ -34,7 +35,7 @@ export class RegisterComponent implements OnInit {
       birthdate: ['', [Validators.required]],
       email: ['', [Validators.required, this.ValidateEmail]],
       password: ['', Validators.required],
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -51,11 +52,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  get email() { return this.registerInfo.get('email'); }
-  get password() { return this.registerInfo.get('password'); }
-  get lastname() { return this.registerInfo.get('lastname'); }
-  get firstname() { return this.registerInfo.get('firstname'); }
-  get birthdate() { return this.registerInfo.get('birthdate'); }
+  get email(): AbstractControl { return this.registerInfo.get('email'); }
+  get password(): AbstractControl { return this.registerInfo.get('password'); }
+  get lastname(): AbstractControl { return this.registerInfo.get('lastname'); }
+  get firstname(): AbstractControl { return this.registerInfo.get('firstname'); }
+  get birthdate(): AbstractControl { return this.registerInfo.get('birthdate'); }
 
 
 }

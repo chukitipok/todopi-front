@@ -20,9 +20,9 @@ export class AuthService {
       first_name: registerInfo.firstname,
       last_name: registerInfo.lastname,
       birthdate: registerInfo.birthdate,
-      email: registerInfo.email,      
-      password: registerInfo.password,      
-    })
+      email: registerInfo.email,
+      password: registerInfo.password,
+    });
   }
 
   isLogged(): boolean {

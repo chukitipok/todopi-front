@@ -7,7 +7,7 @@ import { LoginPage } from '../login-scenario/login.po';
 describe('Register full scenario', () => {
     let page: RegisterPage;
     let loginPage: LoginPage;
-    let tooShortPassword: string = 'shorty'
+    const tooShortPassword = 'shorty';
 
     beforeEach(async () => {
         page = new RegisterPage();
@@ -15,7 +15,7 @@ describe('Register full scenario', () => {
         await page.navigateTo();
     });
 
-    describe("Register tryings possibilies", () => {
+    describe('Register tryings possibilies', () => {
         it('should not change page if register is failed', async () => {
             page.getEmail().sendKeys('toto@toto.fr');
             page.getFirstname().sendKeys('jojo');
@@ -83,7 +83,7 @@ describe('Register full scenario', () => {
         });
     });
 
-    describe("error messages", () => {
+    describe('error messages', () => {
         it('should display error message if firstname is not valid', () => {
             page.getFirstname().click();
             page.getPassword().click();
@@ -145,10 +145,10 @@ describe('Register full scenario', () => {
         });
     });
 
-    describe("Register to login scenario", () => {
+    describe('Register to login scenario', () => {
         it('should register user then allow to connect on this same very user', async () => {
-            const email = 'toto@tuti.fr'
-            const password = 'longAndVeryGoodPassword'
+            const email = 'toto@tuti.fr';
+            const password = 'longAndVeryGoodPassword';
             page.getEmail().sendKeys(email);
             page.getFirstname().sendKeys('jojo');
             page.getLastname().sendKeys('jojo');

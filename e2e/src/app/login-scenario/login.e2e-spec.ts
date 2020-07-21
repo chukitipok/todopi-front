@@ -40,7 +40,7 @@ describe('Login full scenario', () => {
     });
   });
 
-  describe("error messages", () => {
+  describe('error messages', () => {
     it('should display error message if email is not valid', () => {
       page.getEmail().click();
       page.getPassword().click();
@@ -58,15 +58,15 @@ describe('Login full scenario', () => {
     it('should not display error message if email is valid', async () => {
       page.getEmail().click();
       page.getEmail().sendKeys('jesuisunemail');
-      page.getPassword().click(); 
+      page.getPassword().click();
 
       expect((await page.getAllEmailErrorsMessages()).length).toBe(0);
     });
-    
+
     it('should not display error message if password is valid', async () => {
       page.getPassword().click();
       page.getPassword().sendKeys('jesuisunpassword');
-      page.getEmail().click(); 
+      page.getEmail().click();
 
       expect((await page.getAllPasswordErrorsMessages()).length).toBe(0);
     });
