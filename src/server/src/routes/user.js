@@ -9,7 +9,13 @@ router.post('/user/create', async (req, res) => {
   try {
     if (User.is_valid(req.body)) {
       const { first_name, last_name, birthdate, email, password } = req.body || {}
-      console.log(req.body)
+
+      if (await users.model.exists({email})) {
+        return res.send({
+          status: 'failure',
+          message: "user already exists",
+        })
+      }
 
       const result = await users.model.create({
         first_name,
