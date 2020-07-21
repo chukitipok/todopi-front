@@ -138,3 +138,41 @@ router.post('/user/:id/add_content', async (req, res) => {
     result: user
   })
 })
+
+router.put('/user/:id/check', async (req, res) => {
+  const user = await users.model.findById(req.params.id)
+
+  if (!user) {
+    return res.send({
+      success: 'false',
+      message: 'selected used do not exist',
+    })
+  }
+
+  const element_name = req.body.element
+
+  if (!element_name) {
+    return res.send({
+      success: 'false',
+      message: 'Please provde an element [string]',
+    })
+  }
+
+  const todos_name = user.todolist.todos.map(todo => todo.name)
+
+  if (!todos_name.includes(element_name)) {
+    return res.send({
+      success: 'false',
+      message: 'Please provide a valid content',
+    })
+  }
+
+  user.todolist.todos.filter(todo => todo.name = element_name)[0].checked = true
+
+  user.save()
+
+  res.send({
+    status: "success",
+    result: user
+  })
+})

@@ -1,10 +1,12 @@
 import XRegExp from 'xregexp';
 
 import db from '../db';
+import { User } from '../class/user';
 
-const Content = db.Schema({
+export const Content = db.Schema({
   name: { type: String },
   amount: { type: Number },
+  checked: { type: Boolean, default: false },
   create_date: { type: Date, default: new Date() }
 }, { _id: false })
 
