@@ -15,6 +15,16 @@ export class AuthService {
     return this.httpClient.post(`${environment.api_url}/user/login`, credentials);
   }
 
+  register(registerInfo): Observable<any> {
+    return this.httpClient.post(`${environment.api_url}/user/create`, {
+      first_name: registerInfo.firstname,
+      last_name: registerInfo.lastname,
+      birthdate: registerInfo.birthdate,
+      email: registerInfo.email,      
+      password: registerInfo.password,      
+    })
+  }
+
   isLogged(): boolean {
     return this.logged;
   }
