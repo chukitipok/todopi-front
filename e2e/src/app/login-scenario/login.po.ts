@@ -1,4 +1,4 @@
-import {browser, by, element, ElementFinder} from 'protractor';
+import {browser, by, element, ElementFinder, ElementArrayFinder} from 'protractor';
 
 export class LoginPage {
   navigateTo(): Promise<unknown> {
@@ -19,5 +19,21 @@ export class LoginPage {
 
   getCurrentUrl(): Promise<string> {
     return browser.getCurrentUrl() as Promise<string>;
+  }
+
+  getEmailErrorMessage(): ElementFinder {
+    return element(by.id('email-error'));
+  }
+
+  getPasswordErrorMessage(): ElementFinder {
+    return element(by.id('password-error'));
+  }
+
+  async getAllEmailErrorsMessages(): Promise<ElementArrayFinder> {
+    return await element.all(by.id('email-error'));
+  }
+
+  async getAllPasswordErrorsMessages(): Promise<ElementArrayFinder> {
+    return await element.all(by.id('password-error'));
   }
 }

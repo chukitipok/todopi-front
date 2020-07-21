@@ -41,4 +41,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  get email() { return this.credentials.get('email'); }
+  get password() { return this.credentials.get('password'); }
+
 }
