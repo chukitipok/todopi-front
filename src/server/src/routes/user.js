@@ -1,16 +1,58 @@
-import { Router } from 'express';
+import e, { Router } from 'express';
 import * as users from '../models/users'
 import { User } from '../class/user';
 import { is_todolist_valid, can_create_todolist, is_content_valid, can_receive_item, can_add_item } from '../services/todolist.service';
+import { exists } from 'fs';
+import { isObject } from 'lodash';
+import { isValidObjectId } from 'mongoose';
 const router = Router();
 export default router;
+
+router.get('/user/:id', async (req, res) => {
+  try {
+    const id = req.params.id
+    
+    if (!id) {
+      return res.send({
+        status: "failure",
+        message: "Please provide an id",
+      })
+    }
+
+    if (!isValidObjectId(id)) {
+      return res.send({
+        status: "failure",
+        message: "Please provide a valid id",
+      })
+    }
+
+    const user = await users.model.findById(id)
+
+    if (!user) {
+      return res.send({
+        status: "failure",
+        message: "No user",
+      })
+    }
+
+    return res.send({
+      status: "success",
+      user,
+    })
+  } catch (e) {
+    res.send({
+      status: "failure",
+      message: e,
+    })
+  }
+})
 
 router.post('/user/create', async (req, res) => {
   try {
     if (User.is_valid(req.body)) {
       const { first_name, last_name, birthdate, email, password } = req.body || {}
 
-      if (await users.model.exists({email})) {
+      if (await users.model.exists({ email })) {
         return res.send({
           status: 'failure',
           message: "user already exists",
@@ -94,10 +136,6 @@ router.post('/user/:id/create_todolist', async (req, res) => {
       message: "passed data wasn't complete",
     })
   }
-
-  const todolist_name = req.body.todolist_name
-
-
 })
 
 router.post('/user/:id/add_content', async (req, res) => {
