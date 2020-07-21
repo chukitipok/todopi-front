@@ -17,15 +17,13 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private sessionService: SessionService,
-    private router: Router) {
-    this.credentials = formBuilder.group({
+    private router: Router) { }
+
+  ngOnInit(): void {
+    this.credentials = this.formBuilder.group({
       email: ['', [Validators.required]],
       password: ['', Validators.required],
     });
-  }
-
-  ngOnInit(): void {
-
   }
 
   onSubmit(values: AbstractControl): void {
