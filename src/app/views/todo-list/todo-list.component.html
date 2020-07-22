@@ -14,10 +14,20 @@
 </div>
 
 <ng-template #viewTodoList>
-  <div>
-    <h1 class="card-title">{{user?.todoList?.name}}</h1>
-    <form [formGroup]="itemForm" (ngSubmit)="addItem(itemForm)">
-      <label>Hi</label>
-    </form>
-  </div>
+  <h1>{{user.firstName}}</h1>
+  <form [formGroup]="itemForm" (ngSubmit)="addItem(itemForm)">
+    <div class="row mr-auto ml-auto">
+      <div class="form-group col-6">
+        <label for="todo-name" class="form-check-label">Add a new item:</label>
+        <input id="todo-name" type="text" class="form-control" formControlName="content">
+      </div>
+      <div class="form-group col-2">
+        <label for="amount" class="form-check-label">Amount:</label>
+        <input id="amount" type="number" class="form-control" formControlName="amount">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-outline-success " [disabled]="!itemForm.valid">Add</button>
+      </div>
+    </div>
+  </form>
 </ng-template>

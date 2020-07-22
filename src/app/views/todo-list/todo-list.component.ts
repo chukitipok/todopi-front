@@ -4,6 +4,7 @@ import { TodoListService } from '../../services/todo-list.service';
 import { TodoList } from '../../models/todo-list.model';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import {unwrapFirst} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-todo-list',
@@ -38,13 +39,15 @@ export class TodoListComponent implements OnInit {
   }
 
   userHasTodoList(): boolean {
-    return this.user?.todoList !== null;
+    const a = !!this.user.todolist;
+    console.log(a);
+    return !!this.user.todolist;
   }
 
   createTodoList(data: FormGroup): void {
     this.todoListService.createTodoList(data.value).subscribe(response => {
         if (response?.status === 'success') {
-          this.user.todoList = response.result;
+          this.user.todolist = response.result;
         }
       });
   }
