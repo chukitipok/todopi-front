@@ -31,13 +31,13 @@ export class TodoListComponent implements OnInit {
     });
 
     this.itemForm = this.fb.group({
-      content: ['', Validators.required],
+      name: ['', Validators.required],
       amount: [1, [Validators.required, Validators.min(1), Validators.max(1000)]],
     });
   }
 
   userHasTodoList(): boolean {
-    return !!this.user.todolist;
+    return !!this.user?.todolist;
   }
 
   createTodoList(data: FormGroup): void {
@@ -49,6 +49,7 @@ export class TodoListComponent implements OnInit {
   }
 
   addItem(data: FormGroup): void {
+    console.log(data);
     this.todoListService.addItem(data.value).subscribe(response => {
       if (response?.status === 'success') {
         this.user = response.result;

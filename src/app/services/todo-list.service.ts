@@ -21,7 +21,7 @@ export class TodoListService {
   }
 
   addItem(data: any): Observable<any> {
-    return this.http.post(`${this.url}/user/${this.id}/add_content`, {});
+    return this.http.post(`${this.url}/user/${this.id}/add_content`, data);
   }
 
 }
