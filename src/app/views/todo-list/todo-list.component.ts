@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TodoListService } from '../../services/todo-list.service';
-import { TodoList } from '../../models/todo-list.model';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
-import {unwrapFirst} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-todo-list',
@@ -39,8 +37,6 @@ export class TodoListComponent implements OnInit {
   }
 
   userHasTodoList(): boolean {
-    const a = !!this.user.todolist;
-    console.log(a);
     return !!this.user.todolist;
   }
 
