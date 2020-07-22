@@ -1,4 +1,4 @@
-<div *ngIf="!hasTodoList" class="mt-5">
+<div *ngIf="!userHasTodoList() else viewTodoList" class="mt-5">
   <form [formGroup]="todoListForm" (ngSubmit)="createTodoList(todoListForm)">
     <label for="list-name" class="form-check-label">Todo list name:</label>
     <div class="row mr-auto ml-auto align-items-center">
@@ -13,8 +13,11 @@
   </form>
 </div>
 
-<ng-template>
+<ng-template #viewTodoList>
   <div>
-    <form [formGroup]=""></form>
+    <h1 class="card-title">{{user?.todoList?.name}}</h1>
+    <form [formGroup]="itemForm" (ngSubmit)="addItem(itemForm)">
+      <label>Hi</label>
+    </form>
   </div>
 </ng-template>
