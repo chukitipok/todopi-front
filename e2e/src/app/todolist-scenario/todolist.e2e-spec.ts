@@ -40,7 +40,7 @@ describe('Register full scenario', () => {
             expect(await page.getCurrentUrl()).toBe(browser.baseUrl + 'todolist');
 
             expect((await page.getAllNewTodolistContent()).length).toBe(0);
-        })
+        });
 
         it('should hide todolist creation div if user create todolist', async () => {
             await loginPage.navigateTo();
