@@ -33,8 +33,8 @@
     </form>
 
     <div>
-      <ul>
-        <li *ngFor="let todo of user.todolist.todos">{{todo.name}}</li>
+      <ul id="todos-list" class="list-group">
+        <li class="list-group-item" *ngFor="let todo of user.todolist.todos">{{todo.name}}</li>
       </ul>
     </div>
 
