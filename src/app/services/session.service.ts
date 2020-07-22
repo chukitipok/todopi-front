@@ -12,6 +12,8 @@ export class SessionService {
   }
 
   get(key: string): any {
-    return atob(localStorage.getItem(key));
+    return atob(localStorage.getItem(key))
+      .replace('"', '')
+      .replace('"', '');
   }
 }

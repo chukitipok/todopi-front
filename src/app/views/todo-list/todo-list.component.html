@@ -1,3 +1,43 @@
-<div>
-  <button class="btn btn-primary">Add new todo list</button>
+<div id="new-todolist" *ngIf="!userHasTodoList() else viewTodoList" class="mt-5">
+  <form [formGroup]="todoListForm" (ngSubmit)="createTodoList(todoListForm)">
+    <label for="list-name" class="form-check-label">Todo list name:</label>
+    <div class="row mr-auto ml-auto align-items-center">
+      <div class="form-group col-6">
+        <input id="list-name" type="text" class="form-control" formControlName="name">
+      </div>
+      <div class="form-group">
+        <button id="submit-todolist" class="btn btn-outline-success "
+                [disabled]="!todoListForm.valid">Create</button>
+      </div>
+    </div>
+  </form>
 </div>
+
+<ng-template #viewTodoList>
+  <div id="todolist-content" class="mt-5">
+    <h1>{{user.todolist.name}}</h1>
+    <form [formGroup]="itemForm" (ngSubmit)="addItem(itemForm)">
+      <div class="row mr-auto ml-auto mt-5">
+        <div class="form-group col-6">
+          <input id="todo-name" placeholder="Enter your item content here..." type="text" class="form-control" formControlName="name">
+        </div>
+        <div class="form-group col-2">
+          <input id="amount" type="number" class="form-control" formControlName="amount">
+        </div>
+        <div class="form-group">
+          <button id="submit-content"
+                  class="btn btn-outline-success"
+                  [disabled]="!itemForm.valid">Add</button>
+        </div>
+      </div>
+    </form>
+
+    <div>
+      <ul id="todos-list" class="list-group">
+        <li class="list-group-item" *ngFor="let todo of user.todolist.todos">{{todo.name}}</li>
+      </ul>
+    </div>
+
+
+  </div>
+</ng-template>

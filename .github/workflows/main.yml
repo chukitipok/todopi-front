@@ -28,6 +28,9 @@ jobs:
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
           mongodb-replica-set: insert-replica-set-name
+        
+      - name: Chrome driver
+        run: sudo apt-get install chromium-chromedriver
 
       - name: Build Server
         run: |

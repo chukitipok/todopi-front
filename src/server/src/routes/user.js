@@ -115,6 +115,9 @@ router.post('/user/login', async (req, res) => {
 });
 
 router.post('/user/:id/create_todolist', async (req, res) => {
+
+  console.log(req.params)
+
   const user = await users.model.findById(req.params.id)
 
   if (is_todolist_valid(req.body) && can_create_todolist(user)) {
