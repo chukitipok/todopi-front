@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {SessionService} from './session.service';
 import {Observable} from 'rxjs';
+import {Item} from '../models/item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class TodoListService {
 
   addItem(data: any): Observable<any> {
     return this.http.post(`${this.url}/user/${this.id}/add_content`, data);
+  }
+
+  checkItem(data: Item): Observable<any> {
+    return this.http.put(`${this.url}/user/${this.id}/check`, { element: data.name, check_value: !data.checked });
   }
 
 }

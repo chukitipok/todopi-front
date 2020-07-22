@@ -11,7 +11,7 @@ export default router;
 router.get('/user/:id', async (req, res) => {
   try {
     const id = req.params.id
-    
+
     if (!id) {
       return res.send({
         status: "failure",
@@ -146,14 +146,14 @@ router.post('/user/:id/add_content', async (req, res) => {
 
   if (!user) {
     return res.send({
-      success: 'false',
+      status: 'failure',
       message: 'selected used do not exist',
     })
   }
 
   if (!can_receive_item(user.todolist)) {
     return res.send({
-      success: 'false',
+      status: 'failure',
       message: 'You cannot add item yet'
     })
   }
@@ -191,31 +191,30 @@ router.put('/user/:id/check', async (req, res) => {
 
   if (!user) {
     return res.send({
-      success: 'false',
+      status: 'failure',
       message: 'selected used do not exist',
     })
   }
 
-  const element_name = req.body.element
+  const { element, check_value } = req.body
 
-  if (!element_name) {
+  if (!element) {
     return res.send({
-      success: 'false',
-      message: 'Please provde an element [string]',
+      status: 'failure',
+      message: 'Please provide an element [string]',
     })
   }
 
   const todos_name = user.todolist.todos.map(todo => todo.name)
 
-  if (!todos_name.includes(element_name)) {
+  if (!todos_name.includes(element)) {
     return res.send({
-      success: 'false',
+      status: 'failure',
       message: 'Please provide a valid content',
     })
   }
 
-  user.todolist.todos.filter(todo => todo.name = element_name)[0].checked = true
-
+  user.todolist.todos.filter(todo => todo.name === element)[0].checked = check_value;
   user.save()
 
   res.send({

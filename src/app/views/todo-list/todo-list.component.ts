@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TodoListService } from '../../services/todo-list.service';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import {Item} from '../../models/item.model';
 
 @Component({
   selector: 'app-todo-list',
@@ -49,9 +50,16 @@ export class TodoListComponent implements OnInit {
   }
 
   addItem(data: FormGroup): void {
-    console.log(data);
     this.todoListService.addItem(data.value).subscribe(response => {
       if (response?.status === 'success') {
+        this.user = response.result;
+      }
+    });
+  }
+
+  checkTodo(todo: Item): void {
+    this.todoListService.checkItem(todo).subscribe(response => {
+      if (response === 'success') {
         this.user = response.result;
       }
     });

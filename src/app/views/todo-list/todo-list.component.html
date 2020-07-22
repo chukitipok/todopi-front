@@ -14,7 +14,7 @@
 </div>
 
 <ng-template #viewTodoList>
-  <div id="todolist-content" class="mt-5">
+  <div id="todolist-content" class="mt-5 ml-auto mr-auto">
     <h1>{{user.todolist.name}}</h1>
     <form [formGroup]="itemForm" (ngSubmit)="addItem(itemForm)">
       <div class="row mr-auto ml-auto mt-5">
@@ -32,12 +32,16 @@
       </div>
     </form>
 
-    <div>
+    <div class="col-6 mt-5">
       <ul id="todos-list" class="list-group">
-        <li class="list-group-item" *ngFor="let todo of user.todolist.todos">{{todo.name}}</li>
+        <li class="list-group-item" *ngFor="let todo of user.todolist.todos">
+          <span class="col-5">{{todo.name}}</span>
+          <span class="col-5">x {{todo.amount}}</span>
+          <span class="col-2">
+              <input type="checkbox" class="form-check-input" [checked]="todo.checked" (click)="checkTodo(todo)">
+          </span>
+        </li>
       </ul>
     </div>
-
-
   </div>
 </ng-template>
