@@ -6,7 +6,7 @@ import { LoginPage } from '../login-scenario/login.po';
 
 describe('Register full scenario', () => {
     let page: TodolistPage;
-    let loginPage: LoginPage
+    let loginPage: LoginPage;
 
     beforeEach(async () => {
         page = new TodolistPage();
@@ -18,13 +18,13 @@ describe('Register full scenario', () => {
             await page.navigateTo();
 
             expect(page.getNewTodolist().isDisplayed()).toBe(true);
-        })
+        });
 
         it('Should not display add content div if user does not have a todolist', async () => {
             await page.navigateTo();
 
             expect((await page.getAllNewTodolistContent()).length).toBe(0);
-        })
+        });
 
         it('Should display add content div if user have a todolist on login', async () => {
             await loginPage.navigateTo();
@@ -75,8 +75,8 @@ describe('Register full scenario', () => {
 
             page.getTodolistSubmitButton().click();
 
-            expect((await page.getAllNewTodolist()).length).toBe(1)
-            expect((await page.getAllNewTodolistContent()).length).toBe(0)
+            expect((await page.getAllNewTodolist()).length).toBe(1);
+            expect((await page.getAllNewTodolistContent()).length).toBe(0);
         });
     });
 });
