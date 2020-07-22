@@ -9,8 +9,4 @@ describe('TodoListService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(TodoListService);
   });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });
